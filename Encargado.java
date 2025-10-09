@@ -47,6 +47,31 @@ public class Encargado {
         this.contrasenia = nuevaContra;
     }
 
+    public void mostrarCatalogoFunciones() {
+        if (funcionesProgramadas.isEmpty()) {
+            System.out.println("No hay funciones programadas actualmente.");
+            return;
+        }
+
+        System.out.println("=== Catálogo de Funciones Programadas ===");
+        for (Funcion funcion : funcionesProgramadas) {
+            Pelicula peli = funcion.getPelicula();
+            Sala sala = funcion.getSala();
+
+            System.out.println("-------------------------------------------");
+            System.out.println("Título: " + peli.getTitulo());
+            System.out.println("Género: " + peli.getGenero());
+            System.out.println("Duración: " + peli.getDuracion() + " minutos");
+            System.out.println("Clasificación: " + peli.getClasificacion());
+            System.out.println("Sala: " + sala.getNombreSala());
+            System.out.println("Fecha y hora: " + funcion.getFechaHora());
+            System.out.println("Precio de entrada: $" + funcion.getPrecioEntrada());
+            System.out.println("Entradas vendidas: " + funcion.getCantidadCompras());
+        }
+        System.out.println("-------------------------------------------");
+    }
+
+
     // Getters
     public String getNombre() { return nombre; }
     public String getApellido() { return apellido; }

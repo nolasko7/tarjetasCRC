@@ -1,5 +1,5 @@
 public class Cliente {
-    private int identificador;
+    private final int identificador;
     private String nombreApellido;
     private String correo;
     private String contrasena;
