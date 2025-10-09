@@ -27,10 +27,10 @@ public class Encargado {
 
     public void removerFuncion(Funcion funcion) {
         funcionesProgramadas.remove(funcion);
-        System.out.println("Función removida: " + funcion.getPelicula());
+        System.out.println("Función removida: " + funcion.getPelicula().getTitulo());
     }
 
-    public void modificarFuncion(Funcion funcion, String nuevaPelicula, LocalDateTime nuevaFechaHora, Sala nuevaSala, double nuevoPrecio) {
+    public void modificarFuncion(Funcion funcion, Pelicula nuevaPelicula, LocalDateTime nuevaFechaHora, Sala nuevaSala, double nuevoPrecio) {
         if(funcionesProgramadas.contains(funcion)) {
             funcion.modificarFuncion(nuevaPelicula, nuevaFechaHora, nuevaSala, nuevoPrecio);
             System.out.println("Encargado " + nombre + " modificó la función.");

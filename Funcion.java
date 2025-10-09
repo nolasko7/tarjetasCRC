@@ -17,19 +17,20 @@ public class Funcion {
 
     // Vender entrada
     public void venderEntrada() {
-        if(cantidadCompras < sala.getCantidadButacas()) {
+        if (cantidadCompras < sala.getCantidadButacas()) {
             cantidadCompras++;
-            System.out.println("Entrada vendida para " + pelicula);
+            System.out.println("Entrada vendida para " + pelicula.getTitulo());
         } else {
             System.out.println("No hay más butacas disponibles");
         }
     }
+    // Modificar funcion
     public void modificarFuncion(Pelicula nuevaPelicula, LocalDateTime nuevaFechaHora, Sala nuevaSala, double nuevoPrecio) {
         this.pelicula = nuevaPelicula;
         this.fechaHora = nuevaFechaHora;
         this.sala = nuevaSala;
         this.precioEntrada = nuevoPrecio;
-        System.out.println("Función modificada: " + pelicula + " en sala " + sala.getNombreSala());
+        System.out.println("Función modificada: " + pelicula.getTitulo() + " en sala " + sala.getNombreSala());
     }
 
     // Getters
@@ -40,19 +41,19 @@ public class Funcion {
     public double getPrecioEntrada() { return precioEntrada; }
 
     // Setters
-
-    public void cambiarPelicula (Pelicula nuevaPeli) {
-        this.pelicula = nombrePeli;
+    public void cambiarPelicula(Pelicula nuevaPeli) {
+        this.pelicula = nuevaPeli;
     }
 
     public void cambiarHorario(LocalDateTime nuevoHorario) {
         this.fechaHora = nuevoHorario;
     }
 
-    public void cambiarSala (Sala nuevaSala) {
+    public void cambiarSala(Sala nuevaSala) {
         this.sala = nuevaSala;
-    } 
-    public void cambiarPrecio (double precioNuevo) {
+    }
+
+    public void cambiarPrecio(double precioNuevo) {
         this.precioEntrada = precioNuevo;
     }
 }
