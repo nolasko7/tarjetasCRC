@@ -5,13 +5,13 @@ public class Funcion {
     private int cantidadCompras;
     private LocalDateTime fechaHora;
     private Sala sala;
-    private double precioEntrada;
+    private Entrada entradaInfo;
 
-    public Funcion(Pelicula pelicula, LocalDateTime fechaHora, Sala sala, double precioEntrada) {
+    public Funcion(Pelicula pelicula, LocalDateTime fechaHora, Sala sala, Entrada entradaInfo) {
         this.pelicula = pelicula;
         this.fechaHora = fechaHora;
         this.sala = sala;
-        this.precioEntrada = precioEntrada;
+        this.entradaInfo = entradaInfo;
         this.cantidadCompras = 0;
     }
 
@@ -29,7 +29,7 @@ public class Funcion {
         this.pelicula = nuevaPelicula;
         this.fechaHora = nuevaFechaHora;
         this.sala = nuevaSala;
-        this.precioEntrada = nuevoPrecio;
+        this.entradaInfo = entradaInfo;
         System.out.println("Función modificada: " + pelicula.getTitulo() + " en sala " + sala.getNombreSala());
     }
 
@@ -38,7 +38,7 @@ public class Funcion {
     public int getCantidadCompras() { return cantidadCompras; }
     public LocalDateTime getFechaHora() { return fechaHora; }
     public Sala getSala() { return sala; }
-    public double getPrecioEntrada() { return precioEntrada; }
+    public Entrada getPrecioEntrada() { return precioInfo; }
 
     // Setters
     public void cambiarPelicula(Pelicula nuevaPeli) {
@@ -53,7 +53,4 @@ public class Funcion {
         this.sala = nuevaSala;
     }
 
-    public void cambiarPrecio(double precioNuevo) {
-        this.precioEntrada = precioNuevo;
-    }
 }

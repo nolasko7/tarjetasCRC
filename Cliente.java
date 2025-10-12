@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
     private final int identificador;
     private String nombreApellido;
     private String correo;
     private String contrasena;
     private String tipoCliente;
+    private List<Entrada> entradasCompradas;
 
     public Cliente(int identificador, String nombreApellido, String correo, String contrasena, String tipoCliente) {
         this.identificador = identificador;
@@ -11,29 +15,22 @@ public class Cliente {
         this.correo = correo;
         this.contrasena = contrasena;
         this.tipoCliente = tipoCliente;
+        this.entradasCompradas = new ArrayList<>();
+    }
+
+    public void comprarEntrada(Funcion funcion) {
+        if (funcion.getSala().getButacasDisponibles() > 0) {
+            Entrada entrada = new Entrada(funcion.getFechaHora(), funcion, funcion.getSala(), funcion.getPrecioEntrada());
+            entradasCompradas.add(entrada);
+            funcion.venderEntrada();
+            System.out.println(" " + nombreApellido + " compró una entrada para " + funcion.getPelicula().getTitulo());
+        } else {
+            System.out.println("️ No hay asientos disponibles para esa función.");
+        }
     }
 
     // Getters
-    public int getIdentificador() { return identificador; }
     public String getNombreApellido() { return nombreApellido; }
-    public String getCorreo() { return correo; }
-    public String getContrasena() { return contrasena; }
-    public String getTipoCliente() { return tipoCliente; }
-    
-    // Metodos
-    public void accederCartelera() {
-        System.out.println("🎥 " + nombreApellido + " accede a la cartelera de funciones.");
-    }
-
-    public void seleccionarPelicula(Pelicula pelicula) {
-        System.out.println("🍿 " + nombreApellido + " seleccionó la película: " + pelicula.getTitulo());
-    }
-
-    public void realizarCompraEntrada(Funcion funcion, int cantidad) {
-        System.out.println("🧾 " + nombreApellido + " compró " + cantidad + " entrada(s) para " + funcion.getPelicula().getTitulo());
-    }
-
-    public void pagar(String medioPago) {
-        System.out.println("💳 " + nombreApellido + " realizó el pago con: " + medioPago);
-    }
+    public List<Entrada> getEntradasCompradas() { return entradasCompradas; }
 }
+
