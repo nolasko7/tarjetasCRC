@@ -36,15 +36,15 @@ public class Encargado {
     }
 
     // === Gestión de Funciones ===
-    public void programarFuncion(Pelicula pelicula, LocalDateTime fechaHora, Sala sala, double precio) {
-        Funcion funcion = new Funcion(pelicula, fechaHora, sala, precio);
+    public void programarFuncion(Pelicula pelicula, LocalDateTime fechaHora, Sala sala, Entrada entrada) {
+        Funcion funcion = new Funcion(pelicula, fechaHora, sala, entrada);
         funcionesProgramadas.add(funcion);
         System.out.println(" Función programada: " + pelicula.getTitulo() + " en " + sala.getNombreSala());
     }
 
-    public void modificarFuncion(Funcion funcion, Pelicula nuevaPelicula, LocalDateTime nuevaFechaHora, Sala nuevaSala, double nuevoPrecio) {
+    public void modificarFuncion(Funcion funcion, Pelicula nuevaPelicula, LocalDateTime nuevaFechaHora, Sala nuevaSala, Entrada nuevaEntrada) {
         if (funcionesProgramadas.contains(funcion)) {
-            funcion.modificarFuncion(nuevaPelicula, nuevaFechaHora, nuevaSala, nuevoPrecio);
+            funcion.modificarFuncion(nuevaPelicula, nuevaFechaHora, nuevaSala, nuevaEntrada);
             System.out.println(" Función modificada por " + nombre);
         } else {
             System.out.println("️ La función no pertenece a este encargado.");
@@ -75,7 +75,6 @@ public class Encargado {
             System.out.println("Sala: " + sala.getNombreSala());
             System.out.println("Fecha y hora: " + funcion.getFechaHora());
             System.out.println("Precio de entrada: $" + funcion.getPrecioEntrada());
-            System.out.println("Entradas vendidas: " + funcion.getCantidadCompras());
         }
     }
 

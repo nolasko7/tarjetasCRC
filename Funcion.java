@@ -2,7 +2,6 @@ import java.time.LocalDateTime;
 
 public class Funcion {
     private Pelicula pelicula;
-    private int cantidadCompras;
     private LocalDateTime fechaHora;
     private Sala sala;
     private Entrada entradaInfo;
@@ -12,20 +11,20 @@ public class Funcion {
         this.fechaHora = fechaHora;
         this.sala = sala;
         this.entradaInfo = entradaInfo;
-        this.cantidadCompras = 0;
     }
 
-    // Vender entrada
-    public void venderEntrada() {
-        if (cantidadCompras < sala.getCantidadButacas()) {
-            cantidadCompras++;
-            System.out.println("Entrada vendida para " + pelicula.getTitulo());
-        } else {
-            System.out.println("No hay más butacas disponibles");
+    public void comprarEntrada() {
+        // Cada vez que se crea una entrada, se ocupa una butaca
+        boolean ocupada = sala.ocuparButaca();
+        if (ocupada) {
+            System.out.println("Se vendió una entrada para " + getPelicula().getTitulo()
+                    + " en " + sala.getNombreSala() +
+                    ". Butacas ocupadas: " + sala.getButacasOcupadas() + "/" + sala.getCantidadButacas());
         }
     }
+
     // Modificar funcion
-    public void modificarFuncion(Pelicula nuevaPelicula, LocalDateTime nuevaFechaHora, Sala nuevaSala, double nuevoPrecio) {
+    public void modificarFuncion(Pelicula nuevaPelicula, LocalDateTime nuevaFechaHora, Sala nuevaSala, Entrada entradaInfo) {
         this.pelicula = nuevaPelicula;
         this.fechaHora = nuevaFechaHora;
         this.sala = nuevaSala;
@@ -35,10 +34,10 @@ public class Funcion {
 
     // Getters
     public Pelicula getPelicula() { return pelicula; }
-    public int getCantidadCompras() { return cantidadCompras; }
     public LocalDateTime getFechaHora() { return fechaHora; }
     public Sala getSala() { return sala; }
-    public Entrada getPrecioEntrada() { return precioInfo; }
+    public double getPrecioEntrada() { return this.entradaInfo.getPrecio(); }
+    public Entrada getEntrada() { return this.entradaInfo; }
 
     // Setters
     public void cambiarPelicula(Pelicula nuevaPeli) {
@@ -51,6 +50,17 @@ public class Funcion {
 
     public void cambiarSala(Sala nuevaSala) {
         this.sala = nuevaSala;
+    }
+
+    // Métodos informativos
+    public void permitirAccesoSala() {
+        System.out.println("Acceso permitido a la sala: " + sala.getNombreSala());
+    }
+
+    public void informarCliente() {
+        System.out.println("Su función " + getPelicula().getTitulo() +
+                " es el " + fechaHora.toString() + " en la sala " + sala.getNombreSala() +
+                ". Precio: $" + entradaInfo.getPrecio());
     }
 
 }

@@ -22,7 +22,7 @@ public class Cliente {
         if (funcion.getSala().getButacasDisponibles() > 0) {
             Entrada entrada = new Entrada(funcion.getFechaHora(), funcion, funcion.getSala(), funcion.getPrecioEntrada());
             entradasCompradas.add(entrada);
-            funcion.venderEntrada();
+            funcion.comprarEntrada();
             System.out.println(" " + nombreApellido + " compró una entrada para " + funcion.getPelicula().getTitulo());
         } else {
             System.out.println("️ No hay asientos disponibles para esa función.");
