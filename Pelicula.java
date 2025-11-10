@@ -1,6 +1,8 @@
+import java.util.UUID;
 
 public class Pelicula {
-
+    
+    private final UUID id; // No deberia cambiar nunca
     private String titulo;
     private String genero;
     private int duracion; // en minutos
@@ -8,6 +10,7 @@ public class Pelicula {
     private String sinopsis;
     
     public Pelicula(String titulo, String genero, int duracion, String clasificacion, String sinopsis) {
+        this.id = UUID.randomUUID();
         this.titulo = titulo;
         this.genero = genero;
         this.duracion = duracion;
@@ -15,6 +18,7 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
     
+    public String getID() {return id.toString();}
     public String getTitulo() { return titulo; }
     public String getGenero() { return genero; }
     public int getDuracion() { return duracion; }
